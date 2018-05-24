@@ -1,8 +1,10 @@
 package com.procleaus.tea;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 /**
@@ -11,8 +13,8 @@ import android.widget.Button;
 
 public class SencryptActivity extends FilePickerHelper{
     Button btnatt2,btn_et2;
-    private static final int PICKFILE_RESULT_CODE = 1;
     String src;
+    EditText etpass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,7 @@ public class SencryptActivity extends FilePickerHelper{
 
         btnatt2 = (Button) findViewById(R.id.btnatt2);
         btn_et2=(Button)findViewById(R.id.btn_eit2);
-
+        etpass = (EditText)findViewById(R.id.editTextPassword);
         btnatt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,9 +35,12 @@ public class SencryptActivity extends FilePickerHelper{
         btn_et2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                src=FilePickerHelper.setSrc();
+                src=setSrc();
+                AesED.setReq(1);
+                AesED.setCryptPassword(etpass.getText().toString());
                 try {
-                    AesED.encryptfile(src);
+                    Intent i= new Intent(SencryptActivity.this,AesED.class);
+                    startActivity(i);
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -1,11 +1,7 @@
 package com.procleaus.tea;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +23,6 @@ public class EncryptActivity extends FilePickerHelper{
     Button btnDatePicker, btnTimePicker, btneit, btnatt;
     TextView txtDate, txtTime;
     private int mYear, mMonth, mDay, pHour, pMinute,pday,pyear,pmonth;
-    private static final int PICKFILE_RESULT_CODE = 1;
     private boolean dateflag;
 
     @Override
